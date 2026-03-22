@@ -1,0 +1,229 @@
+/*
+ * MATIGNON — MON SUIVI
+ * Design Philosophy: Dark Medical Luxury
+ * - Background: #0A0A0A deep black
+ * - Accent: #B8FF00 neon green (Matignon signature)
+ * - Typography: Bebas Neue (titles) + DM Sans (body) + DM Mono (data)
+ * - Cards: dark surfaces with neon green left-border accents
+ * - Format: mobile-first (max-width 390px centered)
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* Matignon custom tokens */
+  --color-neon: var(--neon);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+}
+
+:root {
+  --radius: 0.5rem;
+  /* Dark theme as default — Matignon brand */
+  --background: oklch(0.09 0 0);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.12 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.12 0 0);
+  --popover-foreground: oklch(0.97 0 0);
+  /* Neon green primary */
+  --primary: oklch(0.93 0.28 128);
+  --primary-foreground: oklch(0.09 0 0);
+  --secondary: oklch(0.16 0 0);
+  --secondary-foreground: oklch(0.80 0 0);
+  --muted: oklch(0.16 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --accent: oklch(0.93 0.28 128);
+  --accent-foreground: oklch(0.09 0 0);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.97 0 0);
+  --border: oklch(0.20 0 0);
+  --input: oklch(0.18 0 0);
+  --ring: oklch(0.93 0.28 128);
+  /* Custom Matignon tokens */
+  --neon: oklch(0.93 0.28 128);
+  --surface: oklch(0.12 0 0);
+  --surface-2: oklch(0.16 0 0);
+  /* Charts */
+  --chart-1: oklch(0.93 0.28 128);
+  --chart-2: oklch(0.75 0.20 128);
+  --chart-3: oklch(0.55 0.15 128);
+  --chart-4: oklch(0.35 0.10 128);
+  --chart-5: oklch(0.20 0.05 128);
+  /* Sidebar */
+  --sidebar: oklch(0.10 0 0);
+  --sidebar-foreground: oklch(0.97 0 0);
+  --sidebar-primary: oklch(0.93 0.28 128);
+  --sidebar-primary-foreground: oklch(0.09 0 0);
+  --sidebar-accent: oklch(0.16 0 0);
+  --sidebar-accent-foreground: oklch(0.97 0 0);
+  --sidebar-border: oklch(0.20 0 0);
+  --sidebar-ring: oklch(0.93 0.28 128);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.04em;
+  }
+  .font-mono, code, .data-label {
+    font-family: 'DM Mono', monospace;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Matignon card with neon left border */
+  .matignon-card {
+    background: oklch(0.12 0 0);
+    border: 1px solid oklch(0.20 0 0);
+    border-left: 3px solid oklch(0.93 0.28 128);
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .matignon-card:hover {
+    border-left-color: oklch(0.93 0.28 128);
+    box-shadow: 0 0 20px oklch(0.93 0.28 128 / 0.08);
+  }
+
+  /* Neon badge */
+  .neon-badge {
+    background: oklch(0.93 0.28 128);
+    color: oklch(0.09 0 0);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Neon text glow */
+  .neon-text {
+    color: oklch(0.93 0.28 128);
+    text-shadow: 0 0 20px oklch(0.93 0.28 128 / 0.4);
+  }
+
+  /* Mobile phone frame */
+  .phone-frame {
+    max-width: 390px;
+    min-height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Section separator */
+  .neon-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, oklch(0.93 0.28 128 / 0.6), transparent);
+  }
+
+  /* Progress ring animation */
+  @keyframes progress-fill {
+    from { stroke-dashoffset: 283; }
+    to { stroke-dashoffset: var(--target-offset); }
+  }
+
+  /* Slide up animation */
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.4s ease forwards;
+  }
+
+  .animate-slide-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .animate-slide-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
+  .animate-slide-up-delay-3 { animation-delay: 0.3s; opacity: 0; }
+  .animate-slide-up-delay-4 { animation-delay: 0.4s; opacity: 0; }
+}
