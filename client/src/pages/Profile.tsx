@@ -1,7 +1,6 @@
 /*
  * MATIGNON — Profile
- * Design: Dark Medical Luxury
- * Contenu: profil client, type de peau, historique, paramètres notifications
+ * Design: Editorial Aesthetic — profil client, infos, paramètres
  */
 import { Bell, ChevronRight, Edit3, LogOut, Shield, FileText, Heart, Settings } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
@@ -48,24 +47,24 @@ const menuSections = [
 
 export default function Profile() {
   return (
-    <div className="phone-frame" style={{ background: "#0A0A0A", minHeight: "100vh", paddingBottom: "80px" }}>
+    <div className="phone-frame" style={{ background: "#fbf9f7", minHeight: "100vh", paddingBottom: "80px" }}>
       {/* Header with background */}
-      <div className="relative" style={{ height: "220px" }}>
+      <div className="relative" style={{ height: "200px" }}>
         <img src={PROFILE_BG} alt="Profile background" className="w-full h-full object-cover" />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, #0A0A0A 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(251,249,247,0.3) 0%, #fbf9f7 100%)" }} />
 
         {/* Avatar & name */}
-        <div className="absolute bottom-0 left-5 right-5 pb-4">
+        <div className="absolute bottom-0 left-6 right-6 pb-4">
           <div className="flex items-end gap-4">
             <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ background: "#B8FF00", fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.5rem", color: "#0A0A0A", letterSpacing: "0.05em", border: "3px solid #0A0A0A" }}>
+              style={{ background: "#755b2e", fontFamily: "'Noto Serif', serif", fontSize: "1.4rem", color: "#ffffff", fontWeight: 700, border: "3px solid #fbf9f7" }}>
               {client.prenom[0]}{client.nom[0]}
             </div>
             <div>
-              <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.8rem", color: "#FFFFFF", letterSpacing: "0.04em", lineHeight: 1 }}>
+              <h1 style={{ fontFamily: "'Noto Serif', serif", fontSize: "1.7rem", color: "#313331", letterSpacing: "-0.01em", lineHeight: 1, fontWeight: 700 }}>
                 {client.prenom} {client.nom}
               </h1>
-              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.62rem", color: "#B8FF00", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+              <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#755b2e", letterSpacing: "0.05rem", textTransform: "uppercase", fontWeight: 600 }}>
                 {client.membre}
               </p>
             </div>
@@ -73,27 +72,27 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className="px-5 space-y-5 mt-2">
+      <div className="px-8 space-y-5 mt-2">
         {/* Profil peau */}
-        <div className="p-4 rounded-lg" style={{ background: "oklch(0.12 0 0)", border: "1px solid oklch(0.20 0 0)", borderLeft: "3px solid #B8FF00" }}>
-          <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "#B8FF00", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>
+        <div className="editorial-card p-4" style={{ background: "#ffffff" }}>
+          <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#755b2e", letterSpacing: "0.05rem", textTransform: "uppercase", marginBottom: "10px", fontWeight: 600 }}>
             Profil peau
           </p>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.65rem", color: "oklch(0.45 0 0)" }}>Type de peau</p>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", color: "#FFFFFF", fontWeight: 500, marginTop: "2px" }}>{client.typePeau}</p>
+              <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#5f5f5f" }}>Type de peau</p>
+              <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.85rem", color: "#313331", fontWeight: 600, marginTop: "2px" }}>{client.typePeau}</p>
             </div>
             <div>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.65rem", color: "oklch(0.45 0 0)" }}>Allergies</p>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", color: "#FFFFFF", fontWeight: 500, marginTop: "2px" }}>{client.allergies}</p>
+              <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#5f5f5f" }}>Allergies</p>
+              <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.85rem", color: "#313331", fontWeight: 600, marginTop: "2px" }}>{client.allergies}</p>
             </div>
           </div>
           <div className="mt-3">
-            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.65rem", color: "oklch(0.45 0 0)", marginBottom: "6px" }}>Objectifs</p>
+            <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#5f5f5f", marginBottom: "6px" }}>Objectifs</p>
             <div className="flex flex-wrap gap-2">
               {client.objectifs.map((obj, i) => (
-                <span key={i} style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.62rem", color: "#B8FF00", background: "rgba(184,255,0,0.08)", border: "1px solid rgba(184,255,0,0.20)", padding: "3px 8px", borderRadius: "2px", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                <span key={i} style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#755b2e", background: "#f5f3f1", padding: "3px 8px", borderRadius: "0.25rem", textTransform: "uppercase", letterSpacing: "0.05rem", fontWeight: 600 }}>
                   {obj}
                 </span>
               ))}
@@ -102,8 +101,8 @@ export default function Profile() {
         </div>
 
         {/* Infos contact */}
-        <div className="p-4 rounded-lg" style={{ background: "oklch(0.12 0 0)", border: "1px solid oklch(0.18 0 0)" }}>
-          <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "oklch(0.40 0 0)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "10px" }}>
+        <div className="editorial-card p-4" style={{ background: "#ffffff" }}>
+          <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#5f5f5f", letterSpacing: "0.05rem", textTransform: "uppercase", marginBottom: "10px", fontWeight: 600 }}>
             Coordonnées
           </p>
           <div className="space-y-3">
@@ -114,8 +113,8 @@ export default function Profile() {
               { label: "Clinique habituelle", value: client.clinique },
             ].map(({ label, value }, i) => (
               <div key={i} className="flex items-center justify-between">
-                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", color: "oklch(0.45 0 0)" }}>{label}</span>
-                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", color: "#FFFFFF", fontWeight: 500 }}>{value}</span>
+                <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.75rem", color: "#5f5f5f" }}>{label}</span>
+                <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.8rem", color: "#313331", fontWeight: 600 }}>{value}</span>
               </div>
             ))}
           </div>
@@ -124,25 +123,25 @@ export default function Profile() {
         {/* Menu sections */}
         {menuSections.map((section, si) => (
           <div key={si}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "oklch(0.40 0 0)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>
+            <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#5f5f5f", letterSpacing: "0.05rem", textTransform: "uppercase", marginBottom: "8px", fontWeight: 600 }}>
               {section.titre}
             </p>
-            <div className="rounded-lg overflow-hidden" style={{ border: "1px solid oklch(0.18 0 0)" }}>
+            <div className="rounded-lg overflow-hidden" style={{ background: "#ffffff" }}>
               {section.items.map((item, ii) => {
                 const Icon = item.icon;
                 return (
-                  <button key={ii} className="w-full flex items-center gap-3 px-4 py-3.5 text-left transition-all active:bg-white/5"
-                    style={{ borderBottom: ii < section.items.length - 1 ? "1px solid oklch(0.15 0 0)" : "none", background: "oklch(0.12 0 0)" }}>
-                    <Icon size={16} style={{ color: (item as any).danger ? "oklch(0.65 0.22 25)" : "oklch(0.55 0 0)", flexShrink: 0 }} />
-                    <span className="flex-1" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: (item as any).danger ? "oklch(0.65 0.22 25)" : "#FFFFFF", fontWeight: 400 }}>
+                  <button key={ii} className="w-full flex items-center gap-3 px-4 py-3.5 text-left transition-all active:bg-gray-50"
+                    style={{ borderTop: ii > 0 ? "1px solid rgba(49, 51, 49, 0.08)" : "none" }}>
+                    <Icon size={16} style={{ color: (item as any).danger ? "#c41c3b" : "#755b2e", flexShrink: 0 }} />
+                    <span className="flex-1" style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.9rem", color: (item as any).danger ? "#c41c3b" : "#313331", fontWeight: 500 }}>
                       {item.label}
                     </span>
                     {(item as any).badge && (
-                      <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "#0A0A0A", background: "#B8FF00", padding: "2px 6px", borderRadius: "2px" }}>
+                      <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#755b2e", background: "#f5f3f1", padding: "2px 6px", borderRadius: "0.25rem", fontWeight: 600 }}>
                         {(item as any).badge}
                       </span>
                     )}
-                    {!(item as any).danger && <ChevronRight size={14} style={{ color: "oklch(0.35 0 0)" }} />}
+                    {!(item as any).danger && <ChevronRight size={14} style={{ color: "#b1b2b0" }} />}
                   </button>
                 );
               })}
@@ -151,8 +150,8 @@ export default function Profile() {
         ))}
 
         {/* Version */}
-        <p className="text-center pb-2" style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "oklch(0.28 0 0)", letterSpacing: "0.08em" }}>
-          MATIGNON APP v1.0 · MÉDECINE ESTHÉTIQUE
+        <p className="text-center pb-2" style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#b1b2b0", letterSpacing: "0.05rem", textTransform: "uppercase" }}>
+          Matignon App v1.0 · Médecine Esthétique
         </p>
       </div>
 

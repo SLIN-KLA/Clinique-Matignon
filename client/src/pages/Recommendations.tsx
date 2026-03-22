@@ -1,7 +1,6 @@
 /*
  * MATIGNON — Recommendations
- * Design: Dark Medical Luxury
- * Contenu: conseils personnalisés, produits recommandés, rappels soins à domicile
+ * Design: Editorial Aesthetic — conseils, produits, palette champagne
  */
 import { Sparkles, ShoppingBag, Sun, Droplets, Shield, ChevronRight, Star } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
@@ -76,82 +75,76 @@ const prochainRetour = {
 
 export default function Recommendations() {
   return (
-    <div className="phone-frame" style={{ background: "#0A0A0A", minHeight: "100vh", paddingBottom: "80px" }}>
+    <div className="phone-frame" style={{ background: "#fbf9f7", minHeight: "100vh", paddingBottom: "80px" }}>
       {/* Header */}
-      <div className="px-5 pt-12 pb-5">
-        <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.65rem", color: "#B8FF00", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+      <div className="px-8 pt-14 pb-6">
+        <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#755b2e", letterSpacing: "0.05rem", textTransform: "uppercase", fontWeight: 600 }}>
           Personnalisé pour vous
         </p>
-        <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "2.2rem", color: "#FFFFFF", letterSpacing: "0.04em" }}>
-          MES CONSEILS
+        <h1 style={{ fontFamily: "'Noto Serif', serif", fontSize: "2rem", color: "#313331", letterSpacing: "-0.01em", fontWeight: 700 }}>
+          Mes conseils
         </h1>
       </div>
 
-      <div className="px-5 space-y-6">
+      <div className="px-8 space-y-6">
         {/* Prochain retour recommandé */}
-        <div className="relative overflow-hidden rounded-lg p-5"
-          style={{ background: "linear-gradient(135deg, rgba(184,255,0,0.08) 0%, oklch(0.12 0 0) 60%)", border: "1px solid rgba(184,255,0,0.20)" }}>
+        <div className="editorial-card p-5" style={{ background: "#ffffff" }}>
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ background: "rgba(184,255,0,0.12)", border: "1px solid rgba(184,255,0,0.30)" }}>
-              <Sparkles size={18} style={{ color: "#B8FF00" }} />
+              style={{ background: "#f5f3f1" }}>
+              <Sparkles size={18} style={{ color: "#755b2e" }} />
             </div>
             <div>
-              <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "#B8FF00", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+              <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#755b2e", letterSpacing: "0.05rem", textTransform: "uppercase", fontWeight: 600 }}>
                 Prochain retour recommandé
               </p>
-              <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.3rem", color: "#FFFFFF", letterSpacing: "0.04em", marginTop: "2px" }}>
+              <h2 style={{ fontFamily: "'Noto Serif', serif", fontSize: "1.3rem", color: "#313331", letterSpacing: "-0.01em", marginTop: "4px", fontWeight: 700 }}>
                 {prochainRetour.traitement}
               </h2>
               <div className="flex items-center gap-2 mt-1">
-                <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.6rem", color: "#B8FF00" }}>
+                <span style={{ fontFamily: "'Noto Serif', serif", fontSize: "1.5rem", color: "#755b2e", fontWeight: 700 }}>
                   {prochainRetour.dateRecommandee}
                 </span>
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.65rem", color: "oklch(0.50 0 0)" }}>
+                <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#5f5f5f" }}>
                   · tous les {prochainRetour.intervalle}
                 </span>
               </div>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "oklch(0.55 0 0)", marginTop: "4px", lineHeight: 1.5 }}>
+              <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.8rem", color: "#5f5f5f", marginTop: "4px", lineHeight: 1.6 }}>
                 {prochainRetour.raison}
               </p>
             </div>
           </div>
-          <button className="mt-4 w-full py-2.5 rounded text-sm font-semibold tracking-wider transition-all active:scale-95"
-            style={{ background: "#B8FF00", color: "#0A0A0A", fontFamily: "'Bebas Neue', sans-serif", fontSize: "0.9rem", letterSpacing: "0.1em" }}>
+          <button className="gradient-button mt-4 w-full py-2.5 rounded text-sm font-semibold tracking-wide transition-all active:scale-95"
+            style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.85rem" }}>
             Réserver maintenant
           </button>
         </div>
 
         {/* Conseils personnalisés */}
         <div>
-          <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", color: "#FFFFFF", letterSpacing: "0.06em", marginBottom: "12px" }}>
-            CONSEILS PERSONNALISÉS
+          <h2 style={{ fontFamily: "'Noto Serif', serif", fontSize: "1.1rem", color: "#313331", letterSpacing: "-0.01em", marginBottom: "12px", fontWeight: 700 }}>
+            Conseils personnalisés
           </h2>
           <div className="space-y-3">
             {conseils.map((c, i) => {
               const Icon = c.icon;
               return (
-                <div key={i} className="p-4 rounded-lg"
-                  style={{
-                    background: "oklch(0.12 0 0)",
-                    border: `1px solid ${c.priorite === "haute" ? "rgba(184,255,0,0.20)" : "oklch(0.18 0 0)"}`,
-                    borderLeft: `3px solid ${c.priorite === "haute" ? "#B8FF00" : "oklch(0.28 0 0)"}`
-                  }}>
+                <div key={i} className="editorial-card p-4" style={{ background: "#ffffff" }}>
                   <div className="flex items-start gap-3">
                     <div className="w-8 h-8 rounded flex items-center justify-center flex-shrink-0"
-                      style={{ background: c.priorite === "haute" ? "rgba(184,255,0,0.10)" : "oklch(0.16 0 0)" }}>
-                      <Icon size={15} style={{ color: c.priorite === "haute" ? "#B8FF00" : "oklch(0.50 0 0)" }} />
+                      style={{ background: c.priorite === "haute" ? "#f5f3f1" : "#ffffff" }}>
+                      <Icon size={15} style={{ color: c.priorite === "haute" ? "#755b2e" : "#5f5f5f" }} />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: "#FFFFFF", fontWeight: 600 }}>
+                        <h3 style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.9rem", color: "#313331", fontWeight: 600 }}>
                           {c.titre}
                         </h3>
-                        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.58rem", color: c.priorite === "haute" ? "#B8FF00" : "oklch(0.45 0 0)", background: c.priorite === "haute" ? "rgba(184,255,0,0.08)" : "oklch(0.16 0 0)", padding: "1px 5px", borderRadius: "2px", textTransform: "uppercase" }}>
+                        <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.6rem", color: c.priorite === "haute" ? "#755b2e" : "#5f5f5f", background: c.priorite === "haute" ? "#f5f3f1" : "#ffffff", padding: "2px 6px", borderRadius: "0.25rem", textTransform: "uppercase", fontWeight: 600 }}>
                           {c.categorie}
                         </span>
                       </div>
-                      <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "oklch(0.58 0 0)", lineHeight: 1.6 }}>
+                      <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.8rem", color: "#5f5f5f", lineHeight: 1.6 }}>
                         {c.message}
                       </p>
                     </div>
@@ -164,11 +157,11 @@ export default function Recommendations() {
 
         {/* Produits recommandés */}
         <div>
-          <div className="flex items-center justify-between mb-3">
-            <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", color: "#FFFFFF", letterSpacing: "0.06em" }}>
-              PRODUITS RECOMMANDÉS
+          <div className="flex items-center justify-between mb-4">
+            <h2 style={{ fontFamily: "'Noto Serif', serif", fontSize: "1.1rem", color: "#313331", letterSpacing: "-0.01em", fontWeight: 700 }}>
+              Produits recommandés
             </h2>
-            <button className="flex items-center gap-1" style={{ color: "#B8FF00", fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem" }}>
+            <button className="flex items-center gap-1" style={{ color: "#755b2e", fontFamily: "'Manrope', sans-serif", fontSize: "0.8rem", fontWeight: 600 }}>
               Shop <ChevronRight size={14} />
             </button>
           </div>
@@ -180,33 +173,32 @@ export default function Recommendations() {
 
           <div className="space-y-2">
             {produits.map((p, i) => (
-              <div key={i} className="flex items-center gap-3 p-3 rounded-lg"
-                style={{ background: "oklch(0.12 0 0)", border: "1px solid oklch(0.18 0 0)" }}>
+              <div key={i} className="editorial-card flex items-center gap-3 p-3" style={{ background: "#ffffff" }}>
                 <div className="w-10 h-10 rounded flex items-center justify-center flex-shrink-0"
-                  style={{ background: "oklch(0.16 0 0)", border: "1px solid oklch(0.22 0 0)" }}>
-                  <ShoppingBag size={16} style={{ color: "#B8FF00" }} />
+                  style={{ background: "#f5f3f1" }}>
+                  <ShoppingBag size={16} style={{ color: "#755b2e" }} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <h3 style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.75rem", color: "#FFFFFF", fontWeight: 500 }}>
+                    <h3 style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.8rem", color: "#313331", fontWeight: 600 }}>
                       {p.nom}
                     </h3>
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.55rem", color: "#0A0A0A", background: "#B8FF00", padding: "1px 5px", borderRadius: "2px", textTransform: "uppercase", flexShrink: 0 }}>
+                    <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.6rem", color: "#ffffff", background: "#755b2e", padding: "2px 6px", borderRadius: "0.25rem", textTransform: "uppercase", flexShrink: 0, fontWeight: 600 }}>
                       {p.badge}
                     </span>
                   </div>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.68rem", color: "oklch(0.45 0 0)", marginTop: "1px" }}>
+                  <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#5f5f5f", marginTop: "1px" }}>
                     {p.raison}
                   </p>
                   <div className="flex items-center gap-1 mt-1">
-                    <Star size={10} style={{ color: "#B8FF00", fill: "#B8FF00" }} />
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.62rem", color: "oklch(0.55 0 0)" }}>{p.note}</span>
+                    <Star size={10} style={{ color: "#755b2e", fill: "#755b2e" }} />
+                    <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#5f5f5f", fontWeight: 500 }}>{p.note}</span>
                   </div>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.78rem", color: "#FFFFFF", fontWeight: 500 }}>{p.prix}</p>
+                  <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.8rem", color: "#313331", fontWeight: 600 }}>{p.prix}</p>
                   <button className="mt-1 px-2 py-1 rounded text-xs transition-all active:scale-95"
-                    style={{ background: "rgba(184,255,0,0.10)", color: "#B8FF00", fontFamily: "'DM Sans', sans-serif", fontSize: "0.65rem", border: "1px solid rgba(184,255,0,0.20)" }}>
+                    style={{ background: "#f5f3f1", color: "#755b2e", fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", fontWeight: 600 }}>
                     Acheter
                   </button>
                 </div>

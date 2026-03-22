@@ -1,7 +1,6 @@
 /*
  * MATIGNON — BottomNav
- * Design: Dark Medical Luxury — navigation bottom bar mobile
- * Icons: lucide-react, fond noir, accent neon vert
+ * Design: Editorial Aesthetic — glassmorphism + tonal layering
  */
 import { Home, Calendar, Sparkles, User, ClipboardList } from "lucide-react";
 import { Link, useLocation } from "wouter";
@@ -18,22 +17,22 @@ export default function BottomNav() {
   const [location] = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] z-50"
-      style={{ background: "oklch(0.10 0 0)", borderTop: "1px solid oklch(0.20 0 0)" }}>
-      <div className="flex items-center justify-around px-2 py-2">
+    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] z-50 glass-nav"
+      style={{ borderTop: "1px solid rgba(49, 51, 49, 0.08)" }}>
+      <div className="flex items-center justify-around px-2 py-3">
         {navItems.map(({ href, icon: Icon, label }) => {
           const isActive = location === href || (href === "/dashboard" && location === "/");
           return (
             <Link key={href} href={href}>
-              <div className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition-all duration-200"
-                style={isActive ? { color: "#B8FF00" } : { color: "oklch(0.55 0 0)" }}>
-                <Icon size={20} strokeWidth={isActive ? 2.5 : 1.8} />
-                <span className="text-[10px] font-medium tracking-wide"
-                  style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              <div className="flex flex-col items-center gap-1 px-3 py-1 rounded-lg transition-all duration-200"
+                style={{ color: isActive ? "#755b2e" : "#5f5f5f" }}>
+                <Icon size={20} strokeWidth={isActive ? 2 : 1.5} />
+                <span className="text-[10px] font-semibold tracking-wide"
+                  style={{ fontFamily: "'Manrope', sans-serif" }}>
                   {label}
                 </span>
                 {isActive && (
-                  <div className="w-1 h-1 rounded-full" style={{ background: "#B8FF00" }} />
+                  <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#755b2e" }} />
                 )}
               </div>
             </Link>

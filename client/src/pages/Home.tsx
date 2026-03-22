@@ -1,8 +1,7 @@
 /*
  * MATIGNON — Home (Splash / Login)
- * Design: Dark Medical Luxury
- * Hero image: femme avec lumière neon verte sur fond noir
- * CTA: Accéder à mon espace client
+ * Design: Editorial Aesthetic — The Clinical Atelier
+ * Hero image avec overlay soft, typographie Noto Serif, palette champagne
  */
 import { useLocation } from "wouter";
 
@@ -12,7 +11,7 @@ export default function Home() {
   const [, navigate] = useLocation();
 
   return (
-    <div className="phone-frame flex flex-col" style={{ background: "#0A0A0A", minHeight: "100vh" }}>
+    <div className="phone-frame flex flex-col" style={{ background: "#fbf9f7", minHeight: "100vh" }}>
       {/* Hero Image */}
       <div className="relative flex-1" style={{ minHeight: "65vh" }}>
         <img
@@ -21,68 +20,60 @@ export default function Home() {
           className="w-full h-full object-cover object-top"
           style={{ minHeight: "65vh" }}
         />
-        {/* Gradient overlay */}
+        {/* Soft overlay gradient */}
         <div className="absolute inset-0"
-          style={{ background: "linear-gradient(to bottom, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.85) 70%, #0A0A0A 100%)" }} />
+          style={{ background: "linear-gradient(to bottom, rgba(251,249,247,0.15) 0%, rgba(251,249,247,0.7) 60%, #fbf9f7 100%)" }} />
 
-        {/* Logo overlay */}
-        <div className="absolute top-12 left-6">
-          <div className="flex items-baseline gap-2">
-            <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "2rem", color: "#FFFFFF", letterSpacing: "0.1em" }}>
+        {/* Logo overlay — asymmetric positioning */}
+        <div className="absolute top-14 left-6">
+          <div className="flex flex-col gap-1">
+            <h1 style={{ fontFamily: "'Noto Serif', serif", fontSize: "2.2rem", color: "#313331", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.01em" }}>
               MATIGNON
-            </span>
-            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.65rem", color: "#B8FF00", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500 }}>
+            </h1>
+            <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#755b2e", letterSpacing: "0.05rem", textTransform: "uppercase", fontWeight: 600 }}>
               Médecine Esthétique
-            </span>
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Bottom content */}
-      <div className="px-6 pb-12 pt-4 animate-slide-up" style={{ background: "#0A0A0A" }}>
-        <div className="neon-divider mb-6" />
+      {/* Bottom content — tonal layering */}
+      <div className="px-8 pb-12 pt-6 animate-slide-up" style={{ background: "#fbf9f7" }}>
+        <div style={{ height: "12px" }} />
 
-        <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "2.6rem", color: "#FFFFFF", lineHeight: 1.1, letterSpacing: "0.04em" }}>
-          MON ESPACE<br />
-          <span style={{ color: "#B8FF00" }}>CLIENT</span>
-        </h1>
+        <h2 style={{ fontFamily: "'Noto Serif', serif", fontSize: "2.4rem", color: "#313331", lineHeight: 1.15, letterSpacing: "-0.015em", fontWeight: 700 }}>
+          Mon espace<br />
+          <span style={{ color: "#755b2e" }}>client</span>
+        </h2>
 
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.875rem", color: "oklch(0.60 0 0)", marginTop: "0.75rem", lineHeight: 1.6 }}>
+        <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.95rem", color: "#5f5f5f", marginTop: "1rem", lineHeight: 1.7 }}>
           Suivez vos traitements, recevez des rappels personnalisés et découvrez les soins adaptés à votre profil.
         </p>
 
         <button
           onClick={() => navigate("/dashboard")}
-          className="w-full mt-8 py-4 font-semibold tracking-widest uppercase transition-all duration-200 active:scale-95"
+          className="gradient-button w-full mt-8 py-4 font-semibold tracking-wide uppercase transition-all active:scale-95"
           style={{
-            background: "#B8FF00",
-            color: "#0A0A0A",
-            fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: "1.1rem",
-            letterSpacing: "0.12em",
-            border: "none",
-            borderRadius: "4px",
-            boxShadow: "0 0 30px rgba(184,255,0,0.25)"
+            fontFamily: "'Manrope', sans-serif",
+            fontSize: "0.95rem",
+            letterSpacing: "0.05rem",
+            border: "none"
           }}>
           Accéder à mon espace
         </button>
 
         <button
           onClick={() => navigate("/dashboard")}
-          className="w-full mt-3 py-3 transition-all duration-200 active:scale-95"
+          className="ghost-button w-full mt-3 py-3 transition-all active:scale-95"
           style={{
-            background: "transparent",
-            color: "oklch(0.55 0 0)",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Manrope', sans-serif",
             fontSize: "0.85rem",
-            border: "1px solid oklch(0.22 0 0)",
-            borderRadius: "4px"
           }}>
           Créer un compte
         </button>
 
-        <p className="text-center mt-6" style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.65rem", color: "oklch(0.35 0 0)", letterSpacing: "0.08em" }}>
-          CLINIQUE MATIGNON · LAUSANNE · GENÈVE · VALAIS
+        <p className="text-center mt-8" style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#5f5f5f", letterSpacing: "0.05rem", textTransform: "uppercase" }}>
+          Clinique Matignon · Lausanne · Genève · Valais
         </p>
       </div>
     </div>

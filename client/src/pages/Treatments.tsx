@@ -1,7 +1,6 @@
 /*
  * MATIGNON — Treatments
- * Design: Dark Medical Luxury
- * Contenu: historique complet des traitements, timeline verticale, statuts
+ * Design: Editorial Aesthetic — timeline, tonal layering
  */
 import { CheckCircle2, Circle, Clock, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
@@ -68,41 +67,41 @@ function TreatmentCard({ t }: { t: typeof treatments[0] }) {
   const progress = (t.seancesEffectuees / t.totalSeances) * 100;
 
   return (
-    <div className="rounded-lg overflow-hidden" style={{ background: "oklch(0.12 0 0)", border: "1px solid oklch(0.20 0 0)", borderLeft: "3px solid #B8FF00" }}>
+    <div className="editorial-card rounded-lg overflow-hidden" style={{ background: "#ffffff" }}>
       {/* Header */}
       <button className="w-full p-4 text-left" onClick={() => setExpanded(!expanded)}>
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "#B8FF00", background: "rgba(184,255,0,0.08)", padding: "1px 6px", borderRadius: "2px", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+              <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#755b2e", background: "#f5f3f1", padding: "2px 8px", borderRadius: "0.25rem", textTransform: "uppercase", letterSpacing: "0.05rem", fontWeight: 600 }}>
                 {t.categorie}
               </span>
             </div>
-            <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.2rem", color: "#FFFFFF", letterSpacing: "0.04em" }}>
+            <h3 style={{ fontFamily: "'Noto Serif', serif", fontSize: "1.15rem", color: "#313331", letterSpacing: "-0.01em", fontWeight: 700 }}>
               {t.nom}
             </h3>
-            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.72rem", color: "oklch(0.50 0 0)", marginTop: "2px" }}>
+            <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.75rem", color: "#5f5f5f", marginTop: "2px" }}>
               {t.praticien} · {t.clinique}
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.75rem", color: "#B8FF00" }}>
+            <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.8rem", color: "#755b2e", fontWeight: 600 }}>
               {t.seancesEffectuees}/{t.totalSeances}
             </span>
-            {expanded ? <ChevronUp size={16} style={{ color: "oklch(0.50 0 0)" }} /> : <ChevronDown size={16} style={{ color: "oklch(0.50 0 0)" }} />}
+            {expanded ? <ChevronUp size={16} style={{ color: "#5f5f5f" }} /> : <ChevronDown size={16} style={{ color: "#5f5f5f" }} />}
           </div>
         </div>
 
         {/* Progress */}
         <div className="mt-3">
-          <div className="h-1.5 rounded-full" style={{ background: "oklch(0.20 0 0)" }}>
-            <div className="h-full rounded-full" style={{ width: `${progress}%`, background: "linear-gradient(90deg, #B8FF00, rgba(184,255,0,0.5))" }} />
+          <div className="h-1.5 rounded-full" style={{ background: "#f5f3f1" }}>
+            <div className="h-full rounded-full progress-champagne" style={{ width: `${progress}%` }} />
           </div>
           <div className="flex justify-between mt-1.5">
-            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.65rem", color: "oklch(0.45 0 0)" }}>
+            <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#5f5f5f" }}>
               Prochaine : {t.prochaine}
             </span>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.65rem", color: "oklch(0.45 0 0)" }}>
+            <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#5f5f5f", fontWeight: 600 }}>
               {Math.round(progress)}%
             </span>
           </div>
@@ -111,37 +110,37 @@ function TreatmentCard({ t }: { t: typeof treatments[0] }) {
 
       {/* Timeline expanded */}
       {expanded && (
-        <div className="px-4 pb-4" style={{ borderTop: "1px solid oklch(0.18 0 0)" }}>
-          <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "oklch(0.40 0 0)", letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 0 8px" }}>
+        <div className="px-4 pb-4" style={{ borderTop: "1px solid rgba(49, 51, 49, 0.08)", background: "#f5f3f1" }}>
+          <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#5f5f5f", letterSpacing: "0.05rem", textTransform: "uppercase", padding: "10px 0 8px", fontWeight: 600 }}>
             Historique des séances
           </p>
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-[11px] top-0 bottom-0 w-px" style={{ background: "oklch(0.20 0 0)" }} />
+            <div className="absolute left-[11px] top-0 bottom-0 w-px" style={{ background: "rgba(49, 51, 49, 0.12)" }} />
 
             <div className="space-y-3">
               {t.seances.map((s) => (
                 <div key={s.num} className="flex items-start gap-3 pl-1">
                   <div className="relative z-10 mt-0.5">
                     {s.statut === "terminé" ? (
-                      <CheckCircle2 size={16} style={{ color: "#B8FF00" }} />
+                      <CheckCircle2 size={16} style={{ color: "#755b2e" }} />
                     ) : s.statut === "planifié" ? (
-                      <Clock size={16} style={{ color: "oklch(0.65 0 0)" }} />
+                      <Clock size={16} style={{ color: "#5f5f5f" }} />
                     ) : (
-                      <Circle size={16} style={{ color: "oklch(0.30 0 0)" }} />
+                      <Circle size={16} style={{ color: "#e8e6e4" }} />
                     )}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", color: s.statut === "terminé" ? "#FFFFFF" : s.statut === "planifié" ? "oklch(0.70 0 0)" : "oklch(0.35 0 0)", fontWeight: 500 }}>
+                      <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.8rem", color: s.statut === "terminé" ? "#313331" : s.statut === "planifié" ? "#5f5f5f" : "#b1b2b0", fontWeight: 600 }}>
                         Séance {s.num}
                       </span>
-                      <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.65rem", color: s.statut === "planifié" ? "#B8FF00" : "oklch(0.45 0 0)" }}>
+                      <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: s.statut === "planifié" ? "#755b2e" : "#5f5f5f", fontWeight: 500 }}>
                         {s.date}
                       </span>
                     </div>
                     {s.notes && (
-                      <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.7rem", color: "oklch(0.50 0 0)", marginTop: "2px", fontStyle: "italic" }}>
+                      <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.72rem", color: "#5f5f5f", marginTop: "2px", fontStyle: "italic" }}>
                         {s.notes}
                       </p>
                     )}
@@ -158,41 +157,40 @@ function TreatmentCard({ t }: { t: typeof treatments[0] }) {
 
 export default function Treatments() {
   return (
-    <div className="phone-frame" style={{ background: "#0A0A0A", minHeight: "100vh", paddingBottom: "80px" }}>
+    <div className="phone-frame" style={{ background: "#fbf9f7", minHeight: "100vh", paddingBottom: "80px" }}>
       {/* Header */}
-      <div className="px-5 pt-12 pb-5">
-        <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.65rem", color: "#B8FF00", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+      <div className="px-8 pt-14 pb-6">
+        <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#755b2e", letterSpacing: "0.05rem", textTransform: "uppercase", fontWeight: 600 }}>
           Suivi
         </p>
-        <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "2.2rem", color: "#FFFFFF", letterSpacing: "0.04em" }}>
-          MES TRAITEMENTS
+        <h1 style={{ fontFamily: "'Noto Serif', serif", fontSize: "2rem", color: "#313331", letterSpacing: "-0.01em", fontWeight: 700 }}>
+          Mes traitements
         </h1>
       </div>
 
       {/* Hero image */}
-      <div className="mx-5 mb-5 rounded-lg overflow-hidden" style={{ height: "140px" }}>
+      <div className="mx-6 mb-6 rounded-lg overflow-hidden" style={{ height: "140px" }}>
         <img src={TREATMENT_IMG} alt="Traitement laser" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 rounded-lg" style={{ background: "linear-gradient(to right, rgba(10,10,10,0.6), transparent)" }} />
       </div>
 
       {/* Stats */}
-      <div className="px-5 mb-5">
-        <div className="grid grid-cols-3 gap-2">
+      <div className="px-8 mb-6">
+        <div className="grid grid-cols-3 gap-3">
           {[
             { label: "Traitements actifs", value: "3" },
             { label: "Séances totales", value: "10" },
             { label: "Complétés", value: "2" },
           ].map(({ label, value }, i) => (
-            <div key={i} className="p-3 rounded-lg text-center" style={{ background: "oklch(0.12 0 0)", border: "1px solid oklch(0.18 0 0)" }}>
-              <p style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.6rem", color: "#B8FF00", lineHeight: 1 }}>{value}</p>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.6rem", color: "oklch(0.45 0 0)", marginTop: "3px", lineHeight: 1.3 }}>{label}</p>
+            <div key={i} className="editorial-card p-3 text-center" style={{ background: "#ffffff" }}>
+              <p style={{ fontFamily: "'Noto Serif', serif", fontSize: "1.5rem", color: "#755b2e", lineHeight: 1, fontWeight: 700 }}>{value}</p>
+              <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#5f5f5f", marginTop: "3px", lineHeight: 1.3, fontWeight: 500 }}>{label}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Treatment cards */}
-      <div className="px-5 space-y-3">
+      <div className="px-8 space-y-3">
         {treatments.map((t) => (
           <TreatmentCard key={t.id} t={t} />
         ))}

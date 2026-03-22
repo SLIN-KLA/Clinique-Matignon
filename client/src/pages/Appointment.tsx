@@ -1,7 +1,6 @@
 /*
  * MATIGNON — Appointment
- * Design: Dark Medical Luxury
- * Contenu: prochain RDV détaillé, instructions pré/post, historique des RDV, prise de RDV
+ * Design: Editorial Aesthetic — RDV, instructions, historique
  */
 import { Calendar, Clock, MapPin, User, ChevronRight, CheckCircle2, AlertCircle, Phone } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
@@ -65,22 +64,22 @@ const pastAppointments = [
 
 export default function Appointment() {
   return (
-    <div className="phone-frame" style={{ background: "#0A0A0A", minHeight: "100vh", paddingBottom: "80px" }}>
+    <div className="phone-frame" style={{ background: "#fbf9f7", minHeight: "100vh", paddingBottom: "80px" }}>
       {/* Header */}
-      <div className="px-5 pt-12 pb-5">
-        <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.65rem", color: "#B8FF00", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+      <div className="px-8 pt-14 pb-6">
+        <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#755b2e", letterSpacing: "0.05rem", textTransform: "uppercase", fontWeight: 600 }}>
           Agenda
         </p>
-        <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "2.2rem", color: "#FFFFFF", letterSpacing: "0.04em" }}>
-          MES RENDEZ-VOUS
+        <h1 style={{ fontFamily: "'Noto Serif', serif", fontSize: "2rem", color: "#313331", letterSpacing: "-0.01em", fontWeight: 700 }}>
+          Mes rendez-vous
         </h1>
       </div>
 
-      <div className="px-5 space-y-5">
+      <div className="px-8 space-y-5">
         {/* Prendre un nouveau RDV */}
         <button
-          className="w-full py-3.5 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95"
-          style={{ background: "#B8FF00", color: "#0A0A0A", fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", letterSpacing: "0.12em", boxShadow: "0 0 25px rgba(184,255,0,0.20)" }}
+          className="gradient-button w-full py-3.5 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95"
+          style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.95rem", letterSpacing: "0.05rem", boxShadow: "0px 20px 40px rgba(117, 91, 46, 0.12)" }}
           onClick={() => toast.success("Redirection vers la prise de RDV en ligne")}>
           <Calendar size={18} />
           PRENDRE UN RENDEZ-VOUS
@@ -89,7 +88,7 @@ export default function Appointment() {
         {/* Appeler la clinique */}
         <button
           className="w-full py-3 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95"
-          style={{ background: "transparent", color: "oklch(0.70 0 0)", fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", border: "1px solid oklch(0.22 0 0)" }}
+          style={{ background: "#f5f3f1", color: "#755b2e", fontFamily: "'Manrope', sans-serif", fontSize: "0.9rem", fontWeight: 600 }}
           onClick={() => toast.info("Appel au 0848 801 108")}>
           <Phone size={15} />
           Appeler la clinique — 0848 801 108
@@ -97,21 +96,21 @@ export default function Appointment() {
 
         {/* Prochains RDV */}
         <div>
-          <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", color: "#FFFFFF", letterSpacing: "0.06em", marginBottom: "12px" }}>
-            PROCHAINS RDV
+          <h2 style={{ fontFamily: "'Noto Serif', serif", fontSize: "1.1rem", color: "#313331", letterSpacing: "-0.01em", marginBottom: "12px", fontWeight: 700 }}>
+            Prochains rendez-vous
           </h2>
 
           <div className="space-y-4">
             {upcomingAppointments.map((appt) => (
-              <div key={appt.id} className="rounded-lg overflow-hidden" style={{ background: "oklch(0.12 0 0)", border: "1px solid oklch(0.20 0 0)", borderLeft: "3px solid #B8FF00" }}>
+              <div key={appt.id} className="editorial-card rounded-lg overflow-hidden" style={{ background: "#ffffff" }}>
                 {/* RDV header */}
                 <div className="p-4">
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "#0A0A0A", background: "#B8FF00", padding: "2px 6px", borderRadius: "2px", textTransform: "uppercase" }}>
+                      <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#ffffff", background: "#755b2e", padding: "3px 8px", borderRadius: "0.25rem", textTransform: "uppercase", fontWeight: 600 }}>
                         Confirmé
                       </span>
-                      <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.15rem", color: "#FFFFFF", letterSpacing: "0.04em", marginTop: "6px", lineHeight: 1.2 }}>
+                      <h3 style={{ fontFamily: "'Noto Serif', serif", fontSize: "1.15rem", color: "#313331", letterSpacing: "-0.01em", marginTop: "6px", lineHeight: 1.2, fontWeight: 700 }}>
                         {appt.traitement}
                       </h3>
                     </div>
@@ -119,26 +118,26 @@ export default function Appointment() {
 
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <Calendar size={13} style={{ color: "#B8FF00" }} />
-                      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", color: "oklch(0.75 0 0)" }}>
+                      <Calendar size={13} style={{ color: "#755b2e" }} />
+                      <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.85rem", color: "#313331" }}>
                         {appt.date}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Clock size={13} style={{ color: "#B8FF00" }} />
-                      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", color: "oklch(0.75 0 0)" }}>
+                      <Clock size={13} style={{ color: "#755b2e" }} />
+                      <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.85rem", color: "#313331" }}>
                         {appt.heure} · {appt.duree}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <User size={13} style={{ color: "#B8FF00" }} />
-                      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", color: "oklch(0.75 0 0)" }}>
+                      <User size={13} style={{ color: "#755b2e" }} />
+                      <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.85rem", color: "#313331" }}>
                         {appt.praticien}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <MapPin size={13} style={{ color: "#B8FF00" }} />
-                      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", color: "oklch(0.75 0 0)" }}>
+                      <MapPin size={13} style={{ color: "#755b2e" }} />
+                      <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.85rem", color: "#313331" }}>
                         {appt.clinique}
                       </span>
                     </div>
@@ -146,16 +145,16 @@ export default function Appointment() {
                 </div>
 
                 {/* Instructions */}
-                <div style={{ borderTop: "1px solid oklch(0.18 0 0)" }}>
+                <div style={{ borderTop: "1px solid rgba(49, 51, 49, 0.08)" }}>
                   <div className="p-4">
-                    <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "oklch(0.40 0 0)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "8px" }}>
+                    <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#5f5f5f", letterSpacing: "0.05rem", textTransform: "uppercase", marginBottom: "8px", fontWeight: 600 }}>
                       Instructions avant la séance
                     </p>
                     <div className="space-y-2">
                       {appt.instructions.avant.map((instr, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <CheckCircle2 size={13} style={{ color: "#B8FF00", marginTop: "2px", flexShrink: 0 }} />
-                          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "oklch(0.65 0 0)", lineHeight: 1.5 }}>
+                          <CheckCircle2 size={13} style={{ color: "#755b2e", marginTop: "2px", flexShrink: 0 }} />
+                          <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.8rem", color: "#313331", lineHeight: 1.5 }}>
                             {instr}
                           </span>
                         </div>
@@ -163,15 +162,15 @@ export default function Appointment() {
                     </div>
                   </div>
 
-                  <div className="p-4" style={{ borderTop: "1px solid oklch(0.15 0 0)", background: "rgba(184,255,0,0.02)" }}>
-                    <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "#B8FF00", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "8px" }}>
+                  <div className="p-4" style={{ borderTop: "1px solid rgba(49, 51, 49, 0.08)", background: "#f5f3f1" }}>
+                    <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.65rem", color: "#755b2e", letterSpacing: "0.05rem", textTransform: "uppercase", marginBottom: "8px", fontWeight: 600 }}>
                       Soins post-séance
                     </p>
                     <div className="space-y-2">
                       {appt.instructions.apres.map((instr, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <AlertCircle size={13} style={{ color: "#B8FF00", marginTop: "2px", flexShrink: 0 }} />
-                          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "oklch(0.65 0 0)", lineHeight: 1.5 }}>
+                          <AlertCircle size={13} style={{ color: "#755b2e", marginTop: "2px", flexShrink: 0 }} />
+                          <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.8rem", color: "#313331", lineHeight: 1.5 }}>
                             {instr}
                           </span>
                         </div>
@@ -181,19 +180,19 @@ export default function Appointment() {
                 </div>
 
                 {/* Actions */}
-                <div className="px-4 pb-4 flex gap-2" style={{ borderTop: "1px solid oklch(0.15 0 0)", paddingTop: "12px" }}>
+                <div className="px-4 pb-4 flex gap-2" style={{ borderTop: "1px solid rgba(49, 51, 49, 0.08)", paddingTop: "12px" }}>
                   <button className="flex-1 py-2 rounded text-xs transition-all active:scale-95"
-                    style={{ background: "oklch(0.16 0 0)", color: "oklch(0.60 0 0)", fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", border: "1px solid oklch(0.22 0 0)" }}
+                    style={{ background: "#f5f3f1", color: "#755b2e", fontFamily: "'Manrope', sans-serif", fontSize: "0.75rem", fontWeight: 600 }}
                     onClick={() => toast.info("Fonctionnalité de report disponible prochainement")}>
                     Reporter
                   </button>
                   <button className="flex-1 py-2 rounded text-xs transition-all active:scale-95"
-                    style={{ background: "oklch(0.16 0 0)", color: "oklch(0.60 0 0)", fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", border: "1px solid oklch(0.22 0 0)" }}
+                    style={{ background: "#f5f3f1", color: "#755b2e", fontFamily: "'Manrope', sans-serif", fontSize: "0.75rem", fontWeight: 600 }}
                     onClick={() => toast.error("Êtes-vous sûr de vouloir annuler ?")}>
                     Annuler
                   </button>
                   <button className="flex-1 py-2 rounded text-xs transition-all active:scale-95"
-                    style={{ background: "rgba(184,255,0,0.10)", color: "#B8FF00", fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", border: "1px solid rgba(184,255,0,0.20)" }}
+                    style={{ background: "#755b2e", color: "#ffffff", fontFamily: "'Manrope', sans-serif", fontSize: "0.75rem", fontWeight: 600 }}
                     onClick={() => toast.success("Rappel ajouté à votre calendrier")}>
                     Rappel
                   </button>
@@ -205,19 +204,19 @@ export default function Appointment() {
 
         {/* Historique */}
         <div>
-          <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", color: "#FFFFFF", letterSpacing: "0.06em", marginBottom: "10px" }}>
-            HISTORIQUE
+          <h2 style={{ fontFamily: "'Noto Serif', serif", fontSize: "1.1rem", color: "#313331", letterSpacing: "-0.01em", marginBottom: "10px", fontWeight: 700 }}>
+            Historique
           </h2>
-          <div className="rounded-lg overflow-hidden" style={{ border: "1px solid oklch(0.18 0 0)" }}>
+          <div className="rounded-lg overflow-hidden" style={{ background: "#ffffff" }}>
             {pastAppointments.map((p, i) => (
-              <div key={i} className="flex items-center gap-3 px-4 py-3 transition-all active:bg-white/5"
-                style={{ borderBottom: i < pastAppointments.length - 1 ? "1px solid oklch(0.14 0 0)" : "none", background: "oklch(0.12 0 0)" }}>
-                <CheckCircle2 size={15} style={{ color: "oklch(0.35 0 0)", flexShrink: 0 }} />
+              <div key={i} className="flex items-center gap-3 px-4 py-3.5 transition-all active:bg-gray-50"
+                style={{ borderTop: i > 0 ? "1px solid rgba(49, 51, 49, 0.08)" : "none" }}>
+                <CheckCircle2 size={15} style={{ color: "#b1b2b0", flexShrink: 0 }} />
                 <div className="flex-1">
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", color: "oklch(0.65 0 0)", fontWeight: 500 }}>{p.traitement}</p>
-                  <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.62rem", color: "oklch(0.38 0 0)", marginTop: "1px" }}>{p.date}</p>
+                  <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.85rem", color: "#313331", fontWeight: 600 }}>{p.traitement}</p>
+                  <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.7rem", color: "#5f5f5f", marginTop: "1px" }}>{p.date}</p>
                 </div>
-                <ChevronRight size={14} style={{ color: "oklch(0.30 0 0)" }} />
+                <ChevronRight size={14} style={{ color: "#b1b2b0" }} />
               </div>
             ))}
           </div>
